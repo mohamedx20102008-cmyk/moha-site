@@ -2,721 +2,368 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>من قلبي ❤️</title>
 
 <style>
-
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
-    margin:0;
-    min-height:100vh;
-    font-family:Arial,sans-serif;
-    color:white;
-    overflow:hidden;
-
-    background:
-    radial-gradient(circle at 15% 20%,#45156b,transparent 35%),
-    radial-gradient(circle at 85% 80%,#0c5268,transparent 35%),
-    #050509;
-
-    transition:background 1s ease;
+margin:0;
+min-height:100vh;
+font-family:Arial,sans-serif;
+color:white;
+overflow:hidden;
+background:
+radial-gradient(circle at 15% 20%,#4b146d,transparent 35%),
+radial-gradient(circle at 85% 80%,#07546b,transparent 35%),
+#050509;
 }
 
-/* النجوم */
-
 #stars{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:0;
+position:fixed;
+inset:0;
+z-index:0;
+pointer-events:none;
 }
 
 .star{
-    position:absolute;
-    width:3px;
-    height:3px;
-    background:white;
-    border-radius:50%;
-
-    animation:
-    twinkle 2s infinite alternate;
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite alternate;
 }
 
 @keyframes twinkle{
-
-    from{
-        opacity:.15;
-    }
-
-    to{
-        opacity:1;
-        transform:scale(1.6);
-    }
+from{opacity:.15}
+to{opacity:1;transform:scale(1.5)}
 }
-
-/* شريط التقدم */
 
 .progress{
-    position:fixed;
-    top:0;
-    right:0;
-
-    height:5px;
-    width:0%;
-
-    z-index:100;
-
-    background:
-    linear-gradient(
-        90deg,
-        #8b5cf6,
-        #00d4ff,
-        #ff4da6
-    );
-
-    transition:.5s;
+position:fixed;
+top:0;
+right:0;
+height:5px;
+width:0;
+z-index:100;
+background:linear-gradient(90deg,#8b5cf6,#00d4ff,#ff4da6);
+transition:.5s;
 }
 
-/* الصفحات */
-
 .page{
-    display:none;
-
-    min-height:100vh;
-
-    justify-content:center;
-    align-items:center;
-
-    padding:20px;
-
-    position:relative;
-    z-index:2;
+display:none;
+min-height:100vh;
+justify-content:center;
+align-items:center;
+padding:20px;
+position:relative;
+z-index:2;
 }
 
 .page.active{
-    display:flex;
-
-    animation:
-    pageIn .7s ease;
+display:flex;
+animation:show .7s ease;
 }
 
-@keyframes pageIn{
-
-    from{
-        opacity:0;
-        transform:
-        scale(.88)
-        translateY(30px);
-    }
-
-    to{
-        opacity:1;
-        transform:
-        scale(1)
-        translateY(0);
-    }
+@keyframes show{
+from{
+opacity:0;
+transform:scale(.88) translateY(30px)
 }
-
-/* الكارت */
+to{
+opacity:1;
+transform:scale(1) translateY(0)
+}
+}
 
 .card{
-
-    width:min(450px,94vw);
-
-    max-height:90vh;
-
-    overflow-y:auto;
-
-    padding:35px 25px;
-
-    text-align:center;
-
-    background:
-    rgba(255,255,255,.08);
-
-    border:
-    1px solid rgba(255,255,255,.18);
-
-    border-radius:32px;
-
-    backdrop-filter:blur(20px);
-
-    box-shadow:
-    0 20px 80px rgba(0,0,0,.65),
-    0 0 60px rgba(110,80,255,.12);
+width:min(460px,94vw);
+max-height:90vh;
+overflow-y:auto;
+padding:35px 25px;
+text-align:center;
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.18);
+border-radius:32px;
+backdrop-filter:blur(20px);
+box-shadow:
+0 20px 80px rgba(0,0,0,.65),
+0 0 60px rgba(100,80,255,.15);
 }
 
-.card::-webkit-scrollbar{
-    display:none;
-}
+.card::-webkit-scrollbar{display:none}
 
-.emoji{
-    font-size:62px;
-}
+.emoji{font-size:60px}
 
 h1{
-
-    font-size:44px;
-
-    margin:15px 0;
-
-    background:
-    linear-gradient(
-        90deg,
-        #9d7cff,
-        white,
-        #55d6ff,
-        #ff69b4
-    );
-
-    -webkit-background-clip:text;
-
-    color:transparent;
+font-size:44px;
+margin:15px 0;
+background:linear-gradient(90deg,#9d7cff,#fff,#55d6ff,#ff69b4);
+-webkit-background-clip:text;
+color:transparent;
 }
 
-h2{
-    font-size:29px;
-}
+h2{font-size:29px}
 
 p{
-    font-size:18px;
-    line-height:1.9;
-    color:#eee;
+font-size:18px;
+line-height:1.9;
+color:#eee;
 }
 
-/* الأزرار */
-
-button,
-.option,
-.upload{
-
-    display:block;
-
-    width:100%;
-
-    margin:14px auto 0;
-
-    padding:15px 20px;
-
-    border:none;
-
-    border-radius:50px;
-
-    background:
-    linear-gradient(
-        90deg,
-        #7057e8,
-        #009fe3
-    );
-
-    color:white;
-
-    font-size:17px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-    box-shadow:
-    0 8px 25px
-    rgba(0,150,255,.18);
+button,.option,.upload{
+display:block;
+width:100%;
+margin:14px auto 0;
+padding:15px 20px;
+border:none;
+border-radius:50px;
+background:linear-gradient(90deg,#7057e8,#009fe3);
+color:#fff;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
 }
 
-button:hover,
-.option:hover,
-.upload:hover{
-
-    transform:
-    translateY(-3px)
-    scale(1.02);
-
-    box-shadow:
-    0 0 35px
-    rgba(0,190,255,.5);
+button:hover,.option:hover,.upload:hover{
+transform:translateY(-3px) scale(1.02);
+box-shadow:0 0 35px rgba(0,190,255,.5);
 }
 
-/* الكتابة */
-
-input[type="text"]{
-
-    width:100%;
-
-    padding:16px;
-
-    border-radius:18px;
-
-    border:
-    1px solid rgba(255,255,255,.2);
-
-    background:
-    rgba(0,0,0,.3);
-
-    color:white;
-
-    font-size:17px;
-
-    text-align:center;
-
-    outline:none;
+input[type=text]{
+width:100%;
+padding:16px;
+border-radius:18px;
+border:1px solid rgba(255,255,255,.2);
+background:rgba(0,0,0,.3);
+color:#fff;
+font-size:17px;
+text-align:center;
+outline:none;
 }
 
-input::placeholder{
-    color:#aaa;
-}
-
-/* الاختيارات */
+input::placeholder{color:#aaa}
 
 .options{
-
-    display:grid;
-
-    gap:12px;
-
-    margin-top:20px;
+display:grid;
+gap:12px;
+margin-top:20px;
 }
 
 .option{
-
-    background:
-    rgba(255,255,255,.08);
-
-    border:
-    1px solid rgba(255,255,255,.15);
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.15);
 }
 
-/* المشاعر */
-
 .feeling{
-
-    display:grid;
-
-    grid-template-columns:
-    1fr 1fr;
-
-    gap:10px;
-
-    margin-top:20px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:20px;
 }
 
 .feel{
-
-    padding:16px 7px;
-
-    border-radius:20px;
-
-    background:
-    rgba(255,255,255,.07);
-
-    border:
-    1px solid rgba(255,255,255,.12);
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.feel:hover{
-
-    transform:scale(1.05);
-
+padding:16px 7px;
+border-radius:20px;
+background:rgba(255,255,255,.07);
+border:1px solid rgba(255,255,255,.12);
+cursor:pointer;
+transition:.3s;
 }
 
 .feel.selected{
-
-    background:
-    linear-gradient(
-        90deg,
-        #7057e8,
-        #009fe3
-    );
-
-    transform:scale(1.04);
-
-    box-shadow:
-    0 0 25px
-    rgba(100,120,255,.3);
+background:linear-gradient(90deg,#7057e8,#009fe3);
+transform:scale(1.04);
 }
 
-/* الأسئلة */
-
-.question{
-    display:none;
-}
+.question{display:none}
 
 .question.active{
-
-    display:block;
-
-    animation:
-    pageIn .5s ease;
+display:block;
+animation:show .5s ease;
 }
 
 textarea{
-
-    width:100%;
-
-    min-height:115px;
-
-    padding:15px;
-
-    resize:none;
-
-    border-radius:18px;
-
-    border:
-    1px solid rgba(255,255,255,.2);
-
-    background:
-    rgba(0,0,0,.3);
-
-    color:white;
-
-    font-family:Arial;
-
-    font-size:16px;
-
-    outline:none;
+width:100%;
+min-height:115px;
+padding:15px;
+resize:none;
+border-radius:18px;
+border:1px solid rgba(255,255,255,.2);
+background:rgba(0,0,0,.3);
+color:#fff;
+font-family:Arial;
+font-size:16px;
+outline:none;
 }
 
 textarea:focus{
-
-    border-color:#7c6cff;
-
-    box-shadow:
-    0 0 15px
-    rgba(124,108,255,.3);
+border-color:#7c6cff;
+box-shadow:0 0 15px rgba(124,108,255,.3);
 }
 
-/* الصور */
-
-#imageInput{
-    display:none;
-}
+#imageInput{display:none}
 
 #preview{
-
-    display:none;
-
-    width:100%;
-
-    max-height:300px;
-
-    object-fit:cover;
-
-    margin-top:20px;
-
-    border-radius:22px;
-
-    box-shadow:
-    0 10px 40px rgba(0,0,0,.5);
-
-    animation:
-    imageIn .8s ease;
+display:none;
+width:100%;
+max-height:300px;
+object-fit:cover;
+margin-top:20px;
+border-radius:22px;
+animation:imageIn .7s ease;
 }
 
 @keyframes imageIn{
-
-    from{
-        opacity:0;
-        transform:
-        scale(.7)
-        rotate(-4deg);
-    }
-
-    to{
-        opacity:1;
-        transform:
-        scale(1)
-        rotate(0);
-    }
+from{opacity:0;transform:scale(.7)}
+to{opacity:1;transform:scale(1)}
 }
 
-/* الذكريات */
-
 .stats{
-
-    display:grid;
-
-    grid-template-columns:
-    1fr 1fr;
-
-    gap:12px;
-
-    margin-top:20px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-top:20px;
 }
 
 .stat{
-
-    padding:20px 10px;
-
-    border-radius:22px;
-
-    background:
-    rgba(255,255,255,.07);
-
-    border:
-    1px solid rgba(255,255,255,.08);
-
-    transition:.3s;
-}
-
-.stat:hover{
-    transform:translateY(-5px);
+padding:20px 10px;
+border-radius:22px;
+background:rgba(255,255,255,.07);
 }
 
 .stat strong{
-
-    display:block;
-
-    font-size:31px;
-
-    margin-bottom:5px;
+display:block;
+font-size:32px;
+margin-bottom:5px;
 }
 
-/* الهدايا */
-
 .gifts{
-
-    display:grid;
-
-    grid-template-columns:
-    1fr 1fr 1fr;
-
-    gap:10px;
-
-    margin-top:25px;
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+gap:10px;
+margin-top:25px;
 }
 
 .gift{
-
-    font-size:58px;
-
-    padding:18px 5px;
-
-    border-radius:22px;
-
-    background:
-    rgba(255,255,255,.07);
-
-    cursor:pointer;
-
-    transition:.3s;
-
-    border:
-    1px solid rgba(255,255,255,.1);
+font-size:58px;
+padding:18px 5px;
+border-radius:22px;
+background:rgba(255,255,255,.07);
+cursor:pointer;
+transition:.3s;
 }
 
 .gift:hover{
-
-    transform:
-    translateY(-10px)
-    rotate(3deg)
-    scale(1.08);
-
-    box-shadow:
-    0 0 30px
-    rgba(255,255,255,.12);
+transform:translateY(-10px) scale(1.08);
 }
 
 .secret{
-
-    display:none;
-
-    margin-top:20px;
-
-    padding:20px;
-
-    border-radius:22px;
-
-    background:
-    rgba(255,255,255,.08);
-
-    animation:
-    pageIn .6s ease;
+display:none;
+margin-top:20px;
+padding:20px;
+border-radius:22px;
+background:rgba(255,255,255,.08);
+animation:show .6s ease;
 }
-
-/* النتيجة */
 
 .score{
-
-    font-size:68px;
-
-    font-weight:bold;
-
-    margin:15px;
-
-    background:
-    linear-gradient(
-        90deg,
-        #ff4da6,
-        white,
-        #7c6cff
-    );
-
-    -webkit-background-clip:text;
-
-    color:transparent;
+font-size:68px;
+font-weight:bold;
+margin:15px;
+background:linear-gradient(90deg,#ffd700,#fff,#ff9d00);
+-webkit-background-clip:text;
+color:transparent;
 }
 
-/* القلب الكبير */
-
 .bigHeart{
-
-    font-size:85px;
-
-    animation:
-    heartbeat 1.2s infinite;
+font-size:85px;
+animation:heartbeat 1.2s infinite;
 }
 
 @keyframes heartbeat{
-
-    0%,100%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.16);
-    }
+0%,100%{transform:scale(1)}
+50%{transform:scale(1.16)}
 }
 
-/* القلوب المتحركة */
-
-.heart{
-
-    position:fixed;
-
-    bottom:-60px;
-
-    z-index:200;
-
-    pointer-events:none;
-
-    animation:
-    fly 4s linear forwards;
+.heart,.coin{
+position:fixed;
+bottom:-60px;
+z-index:200;
+pointer-events:none;
+animation:fly 4s linear forwards;
 }
 
 @keyframes fly{
-
-    0%{
-
-        transform:
-        translateY(0)
-        scale(.5);
-
-        opacity:0;
-    }
-
-    10%{
-        opacity:1;
-    }
-
-    100%{
-
-        transform:
-        translateY(-110vh)
-        translateX(120px)
-        scale(1.8)
-        rotate(360deg);
-
-        opacity:0;
-    }
+0%{
+transform:translateY(0) scale(.5);
+opacity:0;
 }
-
-/* توقيع */
+10%{opacity:1}
+100%{
+transform:
+translateY(-110vh)
+translateX(120px)
+scale(1.8)
+rotate(360deg);
+opacity:0;
+}
+}
 
 .signature{
-
-    margin-top:25px;
-
-    opacity:.65;
-
-    font-size:15px;
+margin-top:25px;
+opacity:.65;
+font-size:15px;
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<div
-class="progress"
-id="progress">
-</div>
-
+<div class="progress" id="progress"></div>
 <div id="stars"></div>
 
 
 <!-- البداية -->
 
-<section
-class="page active"
-id="page1">
-
+<section class="page active" id="page1">
 <div class="card">
 
-<div class="emoji">
-✨
-</div>
+<div class="emoji">✨</div>
 
-<h1>
-من قلبي ❤️
-</h1>
+<h1>من قلبي ❤️</h1>
 
 <p>
-
 الموقع ده معمول مخصوص
-لكل شخص غالي عندي.
-
+للناس اللي ليهم مكان خاص عندي.
 <br><br>
-
-مش مجرد صفحة...
-دي رحلة صغيرة
-فيها شوية من اللي جوايا.
-
+مش مجرد موقع...
+دي رحلة صغيرة فيها حاجات من قلبي.
 </p>
 
-<button
-onclick="nextPage(2);hearts()">
-
+<button onclick="nextPage(2);hearts()">
 ابدأ الرحلة ❤️
-
 </button>
 
 </div>
-
 </section>
 
 
 <!-- الاسم -->
 
-<section
-class="page"
-id="page2">
-
+<section class="page" id="page2">
 <div class="card">
 
-<div class="emoji">
-👋
-</div>
+<div class="emoji">👋</div>
 
-<h2>
-قبل ما نبدأ...
-</h2>
+<h2>مين معايا؟</h2>
 
 <p>
-
-اكتب اسمك عشان
-أناديك بيه طول الرحلة ❤️
-
+اكتب اسمك عشان أخاطبك
+طول الرحلة ❤️
 </p>
 
 <input
@@ -724,464 +371,250 @@ id="nameInput"
 type="text"
 placeholder="اكتب اسمك هنا...">
 
-<button
-onclick="saveName()">
-
+<button onclick="saveName()">
 يلا بينا ✨
-
 </button>
 
 </div>
-
 </section>
 
 
 <!-- العلاقة -->
 
-<section
-class="page"
-id="page3">
-
+<section class="page" id="page3">
 <div class="card">
 
-<div class="emoji">
-🫂
-</div>
+<div class="emoji">🫂</div>
 
-<h2
-id="helloName">
-أهلًا ❤️
-</h2>
+<h2 id="helloName">أهلًا ❤️</h2>
 
-<p>
-إنت إيه بالنسبة لي؟
-</p>
+<p>إنت إيه بالنسبة لي؟</p>
 
 <div class="options">
 
-<div
-class="option"
-onclick="chooseRelation()">
-
-🫂 أخويا
-
-</div>
-
-<div
-class="option"
-onclick="chooseRelation()">
-
-💗 أختي
-
-</div>
-
-<div
-class="option"
-onclick="chooseRelation()">
-
-🔥 صاحبي
-
-</div>
-
-<div
-class="option"
-onclick="chooseRelation()">
-
-💜 صاحبتي
+<div class="option" onclick="chooseRelation()">🫂 أخويا</div>
+<div class="option" onclick="chooseRelation()">💗 أختي</div>
+<div class="option" onclick="chooseRelation()">🔥 صاحبي</div>
+<div class="option" onclick="chooseRelation()">💜 صاحبتي</div>
 
 </div>
 
 </div>
-
-</div>
-
 </section>
 
 
 <!-- رسالة -->
 
-<section
-class="page"
-id="page4">
-
+<section class="page" id="page4">
 <div class="card">
 
-<div class="emoji">
-💌
-</div>
+<div class="emoji">💌</div>
 
-<h2>
-عندي حاجة أقولها لك
-</h2>
+<h2>عندي حاجة أقولها لك</h2>
 
 <p>
-
-وجودك في حياتي
-مش حاجة عادية.
-
+وجودك في حياتي مش حاجة عادية.
 <br><br>
-
-أنا بقدّر كل لحظة
-وكل ضحكة
-وكل موقف جمعنا.
-
+أنا بقدّر كل لحظة وكل موقف وكل ذكرى.
 <br><br>
-
 وبجد...
 أنا مبسوط إنك هنا ❤️
-
 </p>
 
-<button
-onclick="nextPage(5)">
-
+<button onclick="nextPage(5)">
 نكمل 👀
-
 </button>
 
 </div>
-
 </section>
 
 
 <!-- المشاعر -->
 
-<section
-class="page"
-id="page5">
-
+<section class="page" id="page5">
 <div class="card">
 
-<div class="emoji">
-💭
-</div>
+<div class="emoji">💭</div>
 
-<h2>
-اختار إحساسك
-</h2>
+<h2>إيه إحساسك؟</h2>
 
-<p>
-إيه أكتر كلمة بتوصف علاقتنا؟
-</p>
+<p>اختار أكتر كلمة بتوصف علاقتنا.</p>
 
 <div class="feeling">
 
-<div
-class="feel"
-onclick="selectFeeling(this)">
-❤️ حب
-</div>
-
-<div
-class="feel"
-onclick="selectFeeling(this)">
-🫂 أمان
-</div>
-
-<div
-class="feel"
-onclick="selectFeeling(this)">
-😂 ضحك
-</div>
-
-<div
-class="feel"
-onclick="selectFeeling(this)">
-🔥 مغامرات
-</div>
-
-<div
-class="feel"
-onclick="selectFeeling(this)">
-💜 ثقة
-</div>
-
-<div
-class="feel"
-onclick="selectFeeling(this)">
-✨ ذكريات
-</div>
+<div class="feel" onclick="selectFeeling(this)">❤️ حب</div>
+<div class="feel" onclick="selectFeeling(this)">🫂 أمان</div>
+<div class="feel" onclick="selectFeeling(this)">💰 فلوس 😂</div>
+<div class="feel" onclick="selectFeeling(this)">🔥 مغامرات</div>
+<div class="feel" onclick="selectFeeling(this)">💜 ثقة</div>
+<div class="feel" onclick="selectFeeling(this)">✨ ذكريات</div>
 
 </div>
 
-<button
-onclick="nextPage(6)">
-
-اختيار جميل ❤️
-
+<button onclick="nextPage(6)">
+التالي ❤️
 </button>
 
 </div>
-
 </section>
 
 
 <!-- الاختبار -->
 
-<section
-class="page"
-id="page6">
-
+<section class="page" id="page6">
 <div class="card">
 
-<div class="emoji">
-🧠
-</div>
+<div class="emoji">🧠</div>
 
-<h2>
-قد إيه تعرفني؟
-</h2>
+<h2>قد إيه تعرفني؟</h2>
 
-<p>
-ركز بقى 😂
-</p>
+<p>ركز كويس 😂</p>
 
 <div id="quiz">
 
 <p>
-إيه أكتر حاجة ممكن تخليني مبسوط؟ 👀
+💰 إيه أكتر حاجة أنا بحبها؟
 </p>
 
 <div class="options">
 
-<div
-class="option"
-onclick="answer(1)">
-
+<div class="option" onclick="answer(1)">
 💰 الفلوس
-
 </div>
 
-<div
-class="option"
-onclick="answer(2)">
-
+<div class="option" onclick="answer(2)">
 😂 الضحك والهزار
-
 </div>
 
-<div
-class="option"
-onclick="answer(3)">
-
-😴 النوم طول اليوم
-
+<div class="option" onclick="answer(3)">
+😴 النوم
 </div>
 
 </div>
 
 </div>
 
+<div id="quizResult" style="display:none">
 
-<div
-id="quizResult"
-style="display:none">
+<div class="score" id="score"></div>
 
-<div
-class="score"
-id="score">
-</div>
+<p id="scoreText"></p>
 
-<p
-id="scoreText">
-</p>
-
-<button
-onclick="nextPage(7)">
-
+<button onclick="nextPage(7)">
 دلوقتي دورك ❤️
-
 </button>
 
 </div>
 
 </div>
-
 </section>
 
 
 <!-- الأسئلة -->
 
-<section
-class="page"
-id="page7">
-
+<section class="page" id="page7">
 <div class="card">
 
-<div class="emoji">
-💭
-</div>
+<div class="emoji">💭</div>
 
-<h2>
-عايز أعرف رأيك
-</h2>
+<h2>دلوقتي دورك</h2>
 
+<div class="question active" id="q1">
 
-<div
-class="question active"
-id="q1">
+<p>❤️ إيه أكتر حاجة بتحبها فيا؟</p>
 
-<p>
-❤️ إيه أكتر حاجة بتحبها فيا؟
-</p>
+<textarea placeholder="اكتب اللي في قلبك..."></textarea>
 
-<textarea
-placeholder="اكتب اللي في قلبك...">
-</textarea>
-
-<button
-onclick="question(2)">
-
+<button onclick="question(2)">
 التالي ➜
-
 </button>
 
 </div>
 
 
-<div
-class="question"
-id="q2">
+<div class="question" id="q2">
 
-<p>
-😂 لما بكون فرحان،
-إيه أكتر حاجة بتحبها فيا؟
-</p>
+<p>😂 لما بكون فرحان، إيه أكتر حاجة بتحبها فيا؟</p>
 
-<textarea
-placeholder="اكتب هنا...">
-</textarea>
+<textarea placeholder="اكتب هنا..."></textarea>
 
-<button
-onclick="question(3)">
-
+<button onclick="question(3)">
 التالي ➜
-
 </button>
 
 </div>
 
 
-<div
-class="question"
-id="q3">
+<div class="question" id="q3">
 
-<p>
-🫂 لما بكون زعلان،
-إيه أكتر حاجة بتحب تعملها عشاني؟
-</p>
+<p>🫂 لما بكون زعلان، إيه أكتر حاجة بتحب تعملها عشاني؟</p>
 
-<textarea
-placeholder="اكتب هنا...">
-</textarea>
+<textarea placeholder="اكتب هنا..."></textarea>
 
-<button
-onclick="question(4)">
-
+<button onclick="question(4)">
 التالي ➜
-
 </button>
 
 </div>
 
 
-<div
-class="question"
-id="q4">
+<div class="question" id="q4">
 
-<p>
-🔄 إيه أكتر حاجة نفسك تتغير فيا؟
-</p>
+<p>🔄 إيه أكتر حاجة نفسك تتغير فيا؟</p>
 
-<textarea
-placeholder="اكتب بصراحة ❤️">
-</textarea>
+<textarea placeholder="اكتب بصراحة ❤️"></textarea>
 
-<button
-onclick="question(5)">
-
+<button onclick="question(5)">
 التالي ➜
-
 </button>
 
 </div>
 
 
-<div
-class="question"
-id="q5">
+<div class="question" id="q5">
 
-<p>
-📖 إيه أحلى ذكرى بينا؟
-</p>
+<p>📖 إيه أحلى ذكرى بينا؟</p>
 
-<textarea
-placeholder="اكتب أحلى ذكرى...">
-</textarea>
+<textarea placeholder="اكتب أحلى ذكرى..."></textarea>
 
-<button
-onclick="question(6)">
-
+<button onclick="question(6)">
 التالي ➜
-
 </button>
 
 </div>
 
 
-<div
-class="question"
-id="q6">
+<div class="question" id="q6">
 
-<p>
-💌 اكتبلي رسالة من قلبك
-</p>
+<p>💌 اكتبلي رسالة من قلبك.</p>
 
-<textarea
-placeholder="قول اللي نفسك تقوله...">
-</textarea>
+<textarea placeholder="قول اللي نفسك تقوله..."></textarea>
 
-<button
-onclick="nextPage(8)">
-
-خلصت ❤️
-
+<button onclick="sendAnswers()">
+إرسال الإجابات ❤️
 </button>
 
 </div>
 
 </div>
-
 </section>
 
 
 <!-- الصورة -->
 
-<section
-class="page"
-id="page8">
-
+<section class="page" id="page8">
 <div class="card">
 
-<div class="emoji">
-📸
-</div>
+<div class="emoji">📸</div>
 
-<h2>
-اختار ذكرى
-</h2>
+<h2>اختار ذكرى</h2>
 
 <p>
-اختار صورة بتحبها
-وخليها جزء من الرحلة ❤️
+اختار صورة بتحبها وخليها جزء من الرحلة ❤️
 </p>
 
-<label
-for="imageInput"
-class="upload">
-
+<label for="imageInput" class="upload">
 📸 اختار صورة
-
 </label>
 
 <input
@@ -1189,36 +622,24 @@ type="file"
 id="imageInput"
 accept="image/*">
 
-<img
-id="preview">
+<img id="preview">
 
-<button
-onclick="nextPage(9)">
-
+<button onclick="nextPage(9)">
 نكمل ✨
-
 </button>
 
 </div>
-
 </section>
 
 
 <!-- الذكريات -->
 
-<section
-class="page"
-id="page9">
-
+<section class="page" id="page9">
 <div class="card">
 
-<div class="emoji">
-📖
-</div>
+<div class="emoji">📖</div>
 
-<h2>
-ذكرياتنا ❤️
-</h2>
+<h2>ذكرياتنا ❤️</h2>
 
 <div class="stats">
 
@@ -1238,109 +659,68 @@ id="page9">
 </div>
 
 <div class="stat">
-<strong>🫂</strong>
-ذكريات
+<strong>💰</strong>
+فلوس 😂
 </div>
 
 </div>
 
 <p>
-
-الأرقام دي عمرها
-ما هتكفي كل اللي بينا.
-
+الأرقام دي عمرها ما هتكفي كل اللي بينا.
 </p>
 
-<button
-onclick="nextPage(10)">
-
-في مفاجآت 🎁
-
+<button onclick="nextPage(10)">
+المفاجآت 🎁
 </button>
 
 </div>
-
 </section>
 
 
 <!-- الهدايا -->
 
-<section
-class="page"
-id="page10">
-
+<section class="page" id="page10">
 <div class="card">
 
-<div class="emoji">
-🎁
-</div>
+<div class="emoji">🎁</div>
 
-<h2>
-افتح الصناديق كلها
-</h2>
+<h2>افتحهم كلهم</h2>
 
-<p>
-كل صندوق فيه رسالة مختلفة ❤️
-</p>
+<p>كل صندوق فيه رسالة مختلفة ❤️</p>
 
 <div class="gifts">
 
-<div
-class="gift"
-onclick="gift(1)">
-🎁
-</div>
-
-<div
-class="gift"
-onclick="gift(2)">
-🎁
-</div>
-
-<div
-class="gift"
-onclick="gift(3)">
-🎁
-</div>
+<div class="gift" onclick="gift(1)">🎁</div>
+<div class="gift" onclick="gift(2)">🎁</div>
+<div class="gift" onclick="gift(3)">🎁</div>
 
 </div>
 
-<div
-class="secret"
-id="secret">
-</div>
+<div class="secret" id="secret"></div>
 
 <button
 id="finalButton"
 style="display:none"
-onclick="nextPage(11);hearts()">
+onclick="nextPage(11);hearts();coins()">
 
 آخر محطة ❤️
 
 </button>
 
 </div>
-
 </section>
 
 
 <!-- النهاية -->
 
-<section
-class="page"
-id="page11">
-
+<section class="page" id="page11">
 <div class="card">
 
-<div class="bigHeart">
-❤️
-</div>
+<div class="bigHeart">❤️</div>
 
 <h1>
 شكرًا يا
-<span id="finalName">
-صاحبي
-</span>
+<span id="finalName">صاحبي</span>
 </h1>
 
 <p>
@@ -1349,8 +729,8 @@ id="page11">
 
 <br><br>
 
-شكرًا على كل ضحكة،
-وكل موقف،
+شكرًا على كل موقف
+وكل ضحكة
 وكل ذكرى.
 
 <br><br>
@@ -1364,7 +744,7 @@ id="page11">
 
 <br><br>
 
-ربنا يخليك ليا دايمًا 🫂❤️
+وربنا يخليك ليا دايمًا 🫂❤️
 
 </p>
 
@@ -1372,61 +752,37 @@ id="page11">
 من قلبي ❤️
 </div>
 
-<button
-onclick="hearts()">
-
-احتفال 🎉
-
+<button onclick="hearts();coins()">
+احتفال 🎉💰
 </button>
 
 </div>
-
 </section>
 
 
 <script>
 
+/* رابط Google Apps Script */
+
+const GOOGLE_SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbycsB-uEB35FTrRme_vo2x3WPwIdpURvwprpryiaAaeAJWwZson-wADlXaM9eBzlbp6/exec";
+
+
 /* النجوم */
 
-const stars =
-document.getElementById("stars");
+const stars=document.getElementById("stars");
 
-for(
-let i=0;
-i<130;
-i++
-){
+for(let i=0;i<130;i++){
 
-const star =
-document.createElement("div");
+const star=document.createElement("div");
 
 star.className="star";
 
-star.style.left =
-Math.random()*100+"vw";
-
-star.style.top =
-Math.random()*100+"vh";
-
-star.style.animationDelay =
-Math.random()*2+"s";
+star.style.left=Math.random()*100+"vw";
+star.style.top=Math.random()*100+"vh";
+star.style.animationDelay=Math.random()*2+"s";
 
 stars.appendChild(star);
-
-}
-
-
-/* التقدم */
-
-function updateProgress(page){
-
-const percent =
-((page-1)/10)*100;
-
-document
-.getElementById("progress")
-.style.width =
-percent+"%";
 
 }
 
@@ -1445,48 +801,44 @@ document
 .getElementById("page"+number)
 .classList.add("active");
 
-updateProgress(number);
+const percent=((number-1)/10)*100;
+
+document
+.getElementById("progress")
+.style.width=percent+"%";
+
+window.scrollTo(0,0);
 
 }
 
 
 /* الاسم */
 
-let userName =
-localStorage.getItem("myName")
-|| "";
+let userName=
+localStorage.getItem("myName") || "";
 
 function saveName(){
 
-const input =
+const input=
 document.getElementById("nameInput");
 
-const name =
-input.value.trim();
+const name=input.value.trim();
 
-if(name===""){
+if(!name){
 
 alert("اكتب اسمك الأول ❤️");
-
 return;
 
 }
 
 userName=name;
 
-localStorage.setItem(
-"myName",
-name
-);
+localStorage.setItem("myName",name);
 
-document
-.getElementById("helloName")
-innerHTML=
+document.getElementById("helloName").innerHTML=
 "أهلًا يا "+name+" ❤️";
 
-document
-.getElementById("finalName")
-innerHTML=
+document.getElementById("finalName").innerHTML=
 name;
 
 nextPage(3);
@@ -1499,7 +851,6 @@ nextPage(3);
 function chooseRelation(){
 
 nextPage(4);
-
 hearts();
 
 }
@@ -1524,39 +875,27 @@ element.classList.add("selected");
 
 function answer(choice){
 
-document
-.getElementById("quiz")
-.style.display="none";
+document.getElementById("quiz").style.display="none";
 
-document
-.getElementById("quizResult")
-.style.display="block";
+document.getElementById("quizResult").style.display="block";
 
 if(choice===1){
 
-document
-.getElementById("score")
-innerHTML=
+document.getElementById("score").innerHTML=
 "100% 💰";
 
-document
-.getElementById("scoreText")
-innerHTML=
-"😂 عارفني كويس جدًا! الفلوس هي الإجابة الصح طبعًا 💰🔥";
+document.getElementById("scoreText").innerHTML=
+"😂 عارفني كويس جدًا! الفلوس طبعًا هي الإجابة الصح 💰🔥";
 
-hearts();
+coins();
 
 }else{
 
-document
-.getElementById("score")
-.innerHTML=
+document.getElementById("score").innerHTML=
 "😂";
 
-document
-.getElementById("scoreText")
-.innerHTML=
-"إجابة غلط 😂 بس هعديهالك المرة دي ❤️";
+document.getElementById("scoreText").innerHTML=
+"غلط 😂 بس هعديهالك المرة دي ❤️";
 
 }
 
@@ -1580,12 +919,71 @@ document
 }
 
 
+/* إرسال الإجابات إلى Google Sheets */
+
+function sendAnswers(){
+
+const questions=
+document.querySelectorAll("textarea");
+
+const data={
+
+name:userName || "بدون اسم",
+
+q1:questions[0]?.value || "",
+
+q2:questions[1]?.value || "",
+
+q3:questions[2]?.value || "",
+
+q4:questions[3]?.value || "",
+
+q5:questions[4]?.value || "",
+
+q6:questions[5]?.value || ""
+
+};
+
+
+/* إرسال البيانات */
+
+fetch(GOOGLE_SCRIPT_URL,{
+
+method:"POST",
+
+mode:"no-cors",
+
+headers:{
+"Content-Type":"text/plain;charset=utf-8"
+},
+
+body:JSON.stringify(data)
+
+})
+.then(()=>{
+
+alert("تم إرسال إجاباتك ❤️");
+
+nextPage(8);
+
+hearts();
+
+})
+.catch(()=>{
+
+alert("حصلت مشكلة في الإرسال، حاول مرة تانية.");
+
+});
+
+}
+
+
 /* الصورة */
 
-const imageInput =
+const imageInput=
 document.getElementById("imageInput");
 
-const preview =
+const preview=
 document.getElementById("preview");
 
 imageInput.addEventListener(
@@ -1599,8 +997,7 @@ if(file){
 preview.src=
 URL.createObjectURL(file);
 
-preview.style.display=
-"block";
+preview.style.display="block";
 
 hearts();
 
@@ -1615,24 +1012,23 @@ let openedGifts=0;
 
 function gift(number){
 
-const secret =
-document.getElementById("secret");
-
 const messages=[
 
 "❤️ مهما الدنيا اتغيرت، وجودك في حياتي هيفضل حاجة غالية عندي.",
 
-"😂 شكرًا على كل الضحك والهزار والمواقف اللي مستحيل أنساها.",
+"😂 شكرًا على كل المواقف واللحظات اللي مستحيل أنساها.",
 
-"🫂 لو في حاجة عايز تعرفها، فأنا فعلًا بقدر وجودك أكتر مما تتخيل."
+"🫂 أنا فعلًا بقدّر وجودك في حياتي أكتر مما تتخيل."
 
 ];
+
+const secret=
+document.getElementById("secret");
 
 secret.innerHTML=
 messages[number-1];
 
-secret.style.display=
-"block";
+secret.style.display="block";
 
 openedGifts++;
 
@@ -1642,8 +1038,7 @@ if(openedGifts>=3){
 
 document
 .getElementById("finalButton")
-.style.display=
-"block";
+.style.display="block";
 
 }
 
@@ -1654,34 +1049,21 @@ document
 
 function hearts(){
 
-for(
-let i=0;
-i<45;
-i++
-){
+for(let i=0;i<45;i++){
 
-const heart =
+const heart=
 document.createElement("div");
 
 heart.className="heart";
 
 const emojis=[
-"❤️",
-"💙",
-"💜",
-"💚",
-"💛",
-"🩷",
-"💖",
-"✨",
-"💰"
+"❤️","💙","💜","💚",
+"💛","🩷","💖","✨"
 ];
 
 heart.innerHTML=
 emojis[
-Math.floor(
-Math.random()*emojis.length
-)
+Math.floor(Math.random()*emojis.length)
 ];
 
 heart.style.left=
@@ -1693,8 +1075,7 @@ heart.style.fontSize=
 heart.style.animationDuration=
 (3+Math.random()*3)+"s";
 
-document.body
-.appendChild(heart);
+document.body.appendChild(heart);
 
 setTimeout(
 ()=>heart.remove(),
@@ -1706,7 +1087,41 @@ setTimeout(
 }
 
 
-/* حفظ الاسم */
+/* الفلوس */
+
+function coins(){
+
+for(let i=0;i<25;i++){
+
+const coin=
+document.createElement("div");
+
+coin.className="coin";
+
+coin.innerHTML="💰";
+
+coin.style.left=
+Math.random()*100+"vw";
+
+coin.style.fontSize=
+(20+Math.random()*25)+"px";
+
+coin.style.animationDuration=
+(3+Math.random()*2)+"s";
+
+document.body.appendChild(coin);
+
+setTimeout(
+()=>coin.remove(),
+5500
+);
+
+}
+
+}
+
+
+/* استرجاع الاسم */
 
 if(userName){
 
